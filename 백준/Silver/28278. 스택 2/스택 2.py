@@ -1,22 +1,26 @@
 import sys
-input = sys.stdin.readline
 
-N = int(input())
-stack = []
+n = int(sys.stdin.readline())
 
-for _ in range(N):
-    a = input().rstrip()
-    if len(a)>2:
-        stack.append(int(a[2:]))
-    elif a=='2':
-        if(len(stack)==0): print(-1)
-        else: print(stack.pop())
-        
-    elif a=='3':
+stack=[]
+
+for i in range(n):
+    command = sys.stdin.readline().split()
+    
+    if command[0] == '1':
+        stack.append(command[1])
+    elif command[0] == '2':
+        if len(stack) == 0:
+            print(-1)
+        else:
+            print(stack.pop())
+    elif command[0] == '3':
         print(len(stack))
-    elif a=='4':
-        if(len(stack)==0): print(1)
+    elif command[0] == '4':
+        if(len(stack)==0):
+            print(1)
         else: print(0)
-    elif a=='5':
-        if(len(stack)==0): print(-1)
+    elif command[0] == '5':
+        if len(stack) == 0:
+            print(-1)
         else: print(stack[-1])
